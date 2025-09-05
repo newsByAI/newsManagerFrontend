@@ -1,0 +1,18 @@
+name: Manual refresh and Deploy to Cloud Run
+
+on:  
+  workflow_dispatch:    
+permissions:
+  contents: 'read'
+  id-token: 'write'
+jobs:
+
+  call-cloudrun-deploy:
+    name: Deploy to Cloud Run
+    uses: newsByAI/genericWorkflows/.github/workflows/deploy-cloud-run.yml@main
+    with:
+      GCP_REGION: ${{ vars.GCP_REGION }}
+      CLOUD_RUN_SERVICE: frontend-default
+      DOCKER_IMAGE: "${{ vars.GCP_REGISTRY_ZONE }}-docker.pkg.dev/${{ vars.GCP_PROJECT_ENUBE }}/${{ vars.REGISTRY }}/ai-frontend:latest"
+    secrets: inherit
+

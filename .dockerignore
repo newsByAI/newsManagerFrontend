@@ -1,0 +1,16 @@
+# Dependencias
+node_modules
+
+# Archivos de build (se generan dentro de Docker)
+dist
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Archivos de entorno (no deben ir en la imagen)
+.env*
+
+# Archivos de sistema
+.DS_Store
